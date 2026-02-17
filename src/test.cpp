@@ -31,7 +31,10 @@ char keys[ROWS][COLS] = {
 
 // Digital Pins for rows and columns of the keypad
 
+// Keypad has 4 rows connected to digital pins:
 byte rowPins[4] = {22, 24, 26, 28};
+
+// Keypad has 4 columns connected to digital pins:
 byte colPins[4] = {30, 32, 34, 36};
 
 Keypad keypad = Keypad(makeKeymap(keys), rowPins, colPins, ROWS, COLS);
