@@ -10,13 +10,24 @@ This project combines **hardware integration**, **persistent storage**, and **st
 
 ## 🧩 Problem
 
-- Unauthorized individuals are gaining access to restricted areas due to weak or single-factor authentication methods (e.g., shared PINs or physical keys).
+Unauthorized individuals are gaining access to restricted areas due to weak or single-factor authentication methods (e.g., shared PINs or physical keys).
 
--### There is a need for a low-cost embedded system that:
-- Restricts access to authorized users only
-- Requires multi-factor authentication
-- Supports secure user enrollment
+There is a need for a low-cost embedded system that:
+- Restricts access to **authorized users only**
+- Requires **multi-factor authentication**
+- Supports secure **user enrollment**
 - Persists crednetials after power loss
+
+---
+
+## 💡 Solution
+
+A multi-factor embedded security system requiring:
+
+- **4-digit PIN (Keypad)**
+- **Paired RFID Card/Tag (UID)**
+
+---
 
 ## 📹 Demo Video
 
@@ -82,7 +93,7 @@ https://youtu.be/8TgFQsH-KQM
 
 ## 💻 Software Details
 
-- Written in **C++ (Arduino framework)**
+- Written in **C++*
 - Built using **PlatformIO**
 - Structured as a **state-machine architecture**
 - EEPROM records stored using `EEPROM.put()` and `EEPROM.get()`
@@ -106,7 +117,5 @@ https://youtu.be/8TgFQsH-KQM
 
 - Failed-attempt lockout
 - Admin user deletion
-- Access logging
-- RTC integration
-- Secure RFID implementation (DESFire)
+- Secure RFID implementation
 - 3D printed enclosure
