@@ -1,52 +1,33 @@
 🛡️ Embedded Access Control System
 RFID + PIN Authentication with EEPROM Enrollment (Arduino Mega)
-
 🧩 Problem
 
-Unauthorized individuals are gaining access to restricted areas due to insufficient authentication mechanisms (e.g., physical keys, shared access codes, or single-factor authentication systems).
+Unauthorized individuals are gaining access to restricted areas due to weak or single-factor authentication methods (e.g., shared PINs or physical keys).
 
-There is a need for a low-cost, embedded access control solution that:
+There is a need for a low-cost embedded system that:
 
-Restricts entry to authorized users only
+Restricts access to authorized users only
 
-Prevents shared credential misuse
+Requires multi-factor authentication
 
-Supports user enrollment and removal
+Supports secure user enrollment
 
 Persists credentials after power loss
 
 💡 Solution
 
-Design and implement a multi-factor embedded security system that requires:
+A multi-factor embedded security system requiring:
 
-A 4-digit PIN
+4-digit PIN (Keypad)
 
-A paired RFID card/tag (UID)
+Paired RFID Card/Tag (UID)
 
-Both credentials must correspond to a stored user record in EEPROM for access to be granted.
+Both credentials must match a stored record in EEPROM for access to be granted.
 
 An Admin Mode enables secure user enrollment and credential management.
 
-📌 Overview
-
-This project is a fully functional embedded access control system built using an Arduino Mega 2560.
-
-The system integrates:
-
-Keypad input
-
-RFID authentication
-
-LCD user interface
-
-Servo-based gate actuation
-
-EEPROM persistent storage
-
-State-machine firmware architecture
-
-🔐 Features
-👤 Multi-Factor Authentication
+🔐 Core Features
+Multi-Factor Authentication
 
 4-digit PIN entry via keypad
 
@@ -54,27 +35,27 @@ RFID scan required after PIN submission
 
 Paired authentication (UID ↔ PIN must match)
 
-Supports 4-byte and 7-byte RFID UIDs
+Supports 4-byte and 7-byte UIDs
 
-🛠 Admin Mode (EEPROM Enrollment)
+Admin Mode (EEPROM Enrollment)
 
 Enter Admin PIN (9999)
 
 Register new users:
 
-Enter new 4-digit PIN
+Enter 4-digit PIN
 
 Scan RFID card
 
 Credentials saved to EEPROM
 
-Supports up to 50 stored users
+Supports up to 50 users
 
-Credentials persist after power loss
+Persistent storage after power cycle
 
-🖥 Embedded User Interface
+Embedded UI
 
-LCD1602 (Parallel 16x2 display)
+LCD1602 (16x2 Parallel Display)
 
 Real-time prompts:
 
@@ -90,27 +71,27 @@ Keypress audio feedback
 
 Success and failure tones
 
-🚪 Physical Feedback
+Physical Feedback
 
-Servo motor simulates gate/door opening
+Servo motor simulates door/gate
 
 Green LED → Access granted
 
 Red LED → Access denied
 
-Passive buzzer → Audio feedback
+Passive buzzer → Audio alerts
 
 🧠 System Architecture
 State Machine Design
 
-Authentication flow:
+Authentication Flow
 
 WAIT_PIN
    → WAIT_RFID
        → SUCCESS / FAILURE
 
 
-Admin enrollment flow:
+Admin Enrollment Flow
 
 WAIT_PIN (Admin PIN)
    → ADMIN_ENTER_PIN
@@ -118,17 +99,17 @@ WAIT_PIN (Admin PIN)
            → EEPROM Write
 
 
-This structured design ensures:
+Designed for:
 
 Clean state transitions
 
 Deterministic behavior
 
-Expandability for future features
+Expandability
 
-💾 EEPROM Data Structure
+💾 EEPROM Structure
 
-Each stored user record contains:
+Each user record stores:
 
 Active flag
 
@@ -138,92 +119,91 @@ UID bytes (up to 7 bytes)
 
 4-digit PIN
 
-A magic header is used to initialize EEPROM once and prevent accidental overwrites.
+Includes a magic header to prevent accidental EEPROM overwrite.
 
-Credentials remain stored after power cycles.
-
-🧰 Hardware Required
+🧰 Hardware Used
 
 Arduino Mega 2560
 
 MFRC522 RFID Reader (13.56 MHz)
 
-RFID cards / key fobs
+RFID Cards / Key Fobs
 
 4x4 Matrix Keypad
 
-LCD1602 (Parallel version)
+LCD1602 (Parallel)
 
-10k Potentiometer (contrast control)
+10k Potentiometer (contrast)
 
-Servo motor
+Servo Motor
 
-Passive buzzer
+Passive Buzzer
 
-Red LED + Green LED
+Red & Green LEDs
 
-220Ω resistors
+220Ω Resistors
 
-Breadboard + jumper wires
+Breadboard + Jumpers
 
-External 5V supply recommended for servo
+🔌 Interfaces Utilized
 
-🔌 Communication Interfaces Used
+SPI (RFID)
 
-SPI (RFID module)
-
-Parallel 4-bit LCD interface
+Parallel 4-bit LCD
 
 Matrix keypad scanning
 
-PWM (Servo control)
+PWM (Servo)
 
 EEPROM persistent storage
 
-📚 What This Project Demonstrates
+📚 Engineering Concepts Demonstrated
 
 Embedded firmware development
 
-Multi-peripheral hardware integration
+Multi-peripheral integration
 
-EEPROM persistent data management
-
-Authentication system design
+EEPROM data management
 
 State machine architecture
 
-Secure design thinking
+Hardware debugging
 
-Real-world hardware debugging
+Multi-factor authentication logic
 
 🚫 Security Notice
 
-This system uses UID-based RFID authentication and is intended for educational purposes only.
+This project uses UID-based RFID authentication and is intended for educational purposes only.
 
-UID-based RFID systems can be cloned and are not suitable for commercial security deployment.
+Not suitable for commercial security deployment.
 
-🎬 Demo Video Highlights
+🎬 Demo Highlights
 
 Admin user enrollment
 
 Paired authentication validation
 
-Successful entry (green LED, servo actuation)
+Successful entry (servo + LED + tone)
 
-Failed entry (red LED)
+Failed authentication case
 
-Power cycle persistence demonstration
+Power-cycle persistence demonstration
 
-🚀 Potential Future Improvements
+🚀 Future Improvements
 
-Lockout after multiple failed attempts
+Failed-attempt lockout
 
-Admin delete user functionality
+User deletion mode
 
 Event logging
 
-Enclosure design (3D printed housing)
+RTC integration
+
+Secure RFID (DESFire EV2)
+
+3D printed enclosure
 
 👨‍💻 Author
 
 Oguzhan Besiktepe
+Embedded Systems & Software Engineering
