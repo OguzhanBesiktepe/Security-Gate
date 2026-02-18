@@ -1,70 +1,81 @@
-Embedded Access Control System (RFID + PIN)
+🔐 Embedded Access Control System
+RFID + PIN Multi-Factor Authentication (Arduino Mega 2560)
 
-An embedded multi-factor security system built on the Arduino Mega 2560 that restricts access using a paired 4-digit PIN and RFID card (UID).
+An embedded multi-factor authentication system built on the Arduino Mega 2560 that restricts access using a paired 4-digit PIN and RFID UID.
 
-The system features EEPROM-backed user enrollment, LCD-based UI prompts, and physical gate actuation using a servo motor.
+This project integrates:
 
-This project combines hardware integration, persistent storage, and structured state-machine firmware design (C++).
+Persistent credential storage (EEPROM)
+
+Structured state-machine firmware (C++)
+
+Multi-peripheral hardware control
+
+Physical gate actuation via servo motor
+
+Real-time user feedback via LCD, LEDs, and buzzer
 
 📹 Demo Video
 
-(Insert your YouTube link here)
+🎥 (Insert YouTube demo link here)
 
-🔐 System Overview
+🧩 System Architecture Overview
+Authentication Flow
 
 User enters a 4-digit PIN via keypad
 
 User scans an RFID card
 
-System verifies paired credentials from EEPROM
+System verifies paired credentials stored in EEPROM
 
-If valid:
+If Credentials Are Valid
 
-Green LED
+🟢 Green LED activates
 
-Success tone
+🔔 Success tone plays
 
-Servo opens gate
+🔓 Servo motor opens gate
 
-If invalid:
+If Credentials Are Invalid
 
-Red LED
+🔴 Red LED activates
 
-Failure tone
+🔕 Failure tone plays
 
-Gate remains closed
+🔒 Gate remains closed
 
 🛠 Admin Mode
+Enter Admin PIN: 9999
 
-Enter Admin PIN (9999)
+Admin capabilities:
 
-Create new users:
+Create new users
 
-Enter 4-digit PIN
+Enter new 4-digit PIN
 
 Scan RFID card
 
-Credentials saved to EEPROM
+Credentials stored in EEPROM
 
 Supports up to 50 users
 
 Credentials persist after power cycle
 
-🧠 Key Features
+🧠 Key Technical Features
 
 Multi-factor authentication (PIN + RFID)
 
 Paired credential verification (UID ↔ PIN)
 
-Finite State Machine for structured control flow
+Finite State Machine firmware architecture
 
-EEPROM persistent storage
+EEPROM-based persistent storage
 
-Parallel LCD1602 interface (4-bit mode)
+Parallel LCD1602 (4-bit mode)
 
-SPI communication for RFID
+SPI communication (RFID)
 
-Real-time hardware feedback (LED + buzzer + servo)
+Real-time hardware feedback system
 
 🛠️ Hardware Used
 
@@ -82,48 +93,84 @@ Passive Piezo Buzzer
 
 Red & Green LEDs (with resistors)
 
-10k Potentiometer (LCD contrast)
+10k Potentiometer (LCD contrast control)
 
 Breadboard + jumper wires
 
-💻 Software Details
+💻 Software Architecture
 
-Written in C++ (Arduino framework)
+Language: C++ (Arduino framework)
 
 Built using PlatformIO
 
-Structured as a state-machine architecture
+Structured as a Finite State Machine
 
-EEPROM records stored using EEPROM.put() and EEPROM.get()
+EEPROM storage using:
 
-SPI communication via MFRC522
+EEPROM.put()
 
-LCD controlled with LiquidCrystal
+EEPROM.get()
+
+SPI handled via MFRC522 library
+
+LCD controlled using LiquidCrystal
+
+🧱 Firmware Design (State Machine)
+
+The firmware is structured into controlled states such as:
+
+Idle
+
+PIN Entry
+
+RFID Scan
+
+Verification
+
+Access Granted
+
+Access Denied
+
+Admin Enrollment
+
+This state-based architecture improves:
+
+Readability
+
+Debugging efficiency
+
+Scalability
+
+Maintainability
 
 📈 What This Project Demonstrates
 
-Embedded systems design
+Embedded systems design principles
 
 Multi-peripheral hardware integration
 
 Persistent credential management
 
-Authentication system architecture
+Authentication system implementation
 
-State-based firmware logic
+Structured firmware architecture
 
-Hardware debugging & signal validation
+Hardware debugging & validation workflow
+
+This project reflects a transition from hobby-level Arduino projects to structured embedded system development.
 
 🚀 Future Improvements
 
-Failed-attempt lockout
+Failed-attempt lockout protection
 
-Admin user deletion
+Admin user deletion functionality
 
-Access logging
+Access event logging
 
-RTC integration
+Real-Time Clock (RTC) integration
 
-Secure RFID implementation (DESFire)
+Secure RFID implementation (e.g., DESFire)
 
-3D printed enclosure
+Custom PCB design
+
+3D-printed enclosure
