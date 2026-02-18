@@ -1,10 +1,10 @@
-🛡️ Embedded Access Control System (RFID + PIN)
+Embedded Access Control System (RFID + PIN)
 
-A multi-factor embedded security system built on the Arduino Mega that restricts access using a paired 4-digit PIN and RFID card (UID).
+An embedded multi-factor security system built on the Arduino Mega 2560 that restricts access using a paired 4-digit PIN and RFID card (UID).
 
 The system features EEPROM-backed user enrollment, LCD-based UI prompts, and physical gate actuation using a servo motor.
 
-This project combines hardware integration, persistent storage, and structured state-machine firmware design in C++.
+This project combines hardware integration, persistent storage, and structured state-machine firmware design (C++).
 
 📹 Demo Video
 
@@ -14,7 +14,7 @@ This project combines hardware integration, persistent storage, and structured s
 
 User enters a 4-digit PIN via keypad
 
-User scans RFID card
+User scans an RFID card
 
 System verifies paired credentials from EEPROM
 
@@ -44,13 +44,29 @@ Enter 4-digit PIN
 
 Scan RFID card
 
-Credentials stored in EEPROM
+Credentials saved to EEPROM
 
 Supports up to 50 users
 
 Credentials persist after power cycle
 
-📐 Hardware Used
+🧠 Key Features
+
+Multi-factor authentication (PIN + RFID)
+
+Paired credential verification (UID ↔ PIN)
+
+Finite State Machine for structured control flow
+
+EEPROM persistent storage
+
+Parallel LCD1602 interface (4-bit mode)
+
+SPI communication for RFID
+
+Real-time hardware feedback (LED + buzzer + servo)
+
+🛠️ Hardware Used
 
 Arduino Mega 2560
 
@@ -62,9 +78,9 @@ LCD1602 (Parallel, 4-bit mode)
 
 Servo Motor
 
-Passive Buzzer
+Passive Piezo Buzzer
 
-Red & Green LEDs
+Red & Green LEDs (with resistors)
 
 10k Potentiometer (LCD contrast)
 
@@ -74,31 +90,29 @@ Breadboard + jumper wires
 
 Written in C++ (Arduino framework)
 
-Built with PlatformIO
+Built using PlatformIO
 
-State-machine driven logic
+Structured as a state-machine architecture
 
-EEPROM structured user records
+EEPROM records stored using EEPROM.put() and EEPROM.get()
 
-SPI communication for RFID
+SPI communication via MFRC522
 
-Parallel 4-bit LCD interface
+LCD controlled with LiquidCrystal
 
-Non-blocking keypress feedback
+📈 What This Project Demonstrates
 
-🧠 Key Concepts Demonstrated
+Embedded systems design
 
-Multi-factor authentication logic
+Multi-peripheral hardware integration
 
-Paired credential verification (UID ↔ PIN)
+Persistent credential management
 
-EEPROM persistent storage
+Authentication system architecture
 
-Structured state-machine design
+State-based firmware logic
 
-Multi-peripheral embedded integration
-
-Hardware debugging and validation
+Hardware debugging & signal validation
 
 🚀 Future Improvements
 
@@ -106,10 +120,10 @@ Failed-attempt lockout
 
 Admin user deletion
 
-Event logging
+Access logging
 
 RTC integration
 
-3D printed enclosure
+Secure RFID implementation (DESFire)
 
-Secure RFID (DESFire)
+3D printed enclosure
