@@ -8,6 +8,12 @@ This project combines **hardware integration**, **persistent storage**, and **st
 
 ---
 
+## 📹 Demo Video
+
+https://youtu.be/8TgFQsH-KQM
+
+---
+
 ## 🧩 Problem
 
 Unauthorized individuals are gaining access to restricted areas due to weak or single-factor authentication methods (e.g., shared PINs or physical keys).
@@ -26,12 +32,6 @@ A multi-factor embedded security system requiring:
 
 - **4-digit PIN (Keypad)**
 - **Paired RFID Card/Tag (UID)**
-
----
-
-## 📹 Demo Video
-
-https://youtu.be/8TgFQsH-KQM
 
 ---
 
