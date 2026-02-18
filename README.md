@@ -1,139 +1,64 @@
-🛡️ Embedded Access Control System
-RFID + PIN Authentication with EEPROM Enrollment (Arduino Mega)
-🧩 Problem
+🛡️ Embedded Access Control System (RFID + PIN)
 
-Unauthorized individuals are gaining access to restricted areas due to weak or single-factor authentication methods (e.g., shared PINs or physical keys).
+A multi-factor embedded security system built on the Arduino Mega that restricts access using a paired 4-digit PIN and RFID card (UID).
 
-There is a need for a low-cost embedded system that:
+The system features EEPROM-backed user enrollment, LCD-based UI prompts, and physical gate actuation using a servo motor.
 
-Restricts access to authorized users only
+This project combines hardware integration, persistent storage, and structured state-machine firmware design in C++.
 
-Requires multi-factor authentication
+📹 Demo Video
 
-Supports secure user enrollment
+(Insert your YouTube link here)
 
-Persists credentials after power loss
+🔐 System Overview
 
-💡 Solution
+User enters a 4-digit PIN via keypad
 
-A multi-factor embedded security system requiring:
+User scans RFID card
 
-4-digit PIN (Keypad)
+System verifies paired credentials from EEPROM
 
-Paired RFID Card/Tag (UID)
+If valid:
 
-Both credentials must match a stored record in EEPROM for access to be granted.
+Green LED
 
-An Admin Mode enables secure user enrollment and credential management.
+Success tone
 
-🔐 Core Features
-Multi-Factor Authentication
+Servo opens gate
 
-4-digit PIN entry via keypad
+If invalid:
 
-RFID scan required after PIN submission
+Red LED
 
-Paired authentication (UID ↔ PIN must match)
+Failure tone
 
-Supports 4-byte and 7-byte UIDs
+Gate remains closed
 
-Admin Mode (EEPROM Enrollment)
+🛠 Admin Mode
 
 Enter Admin PIN (9999)
 
-Register new users:
+Create new users:
 
 Enter 4-digit PIN
 
 Scan RFID card
 
-Credentials saved to EEPROM
+Credentials stored in EEPROM
 
 Supports up to 50 users
 
-Persistent storage after power cycle
+Credentials persist after power cycle
 
-Embedded UI
-
-LCD1602 (16x2 Parallel Display)
-
-Real-time prompts:
-
-“Enter PIN”
-
-“Scan RFID”
-
-“Access Granted”
-
-“Access Denied”
-
-Keypress audio feedback
-
-Success and failure tones
-
-Physical Feedback
-
-Servo motor simulates door/gate
-
-Green LED → Access granted
-
-Red LED → Access denied
-
-Passive buzzer → Audio alerts
-
-🧠 System Architecture
-State Machine Design
-
-Authentication Flow
-
-WAIT_PIN
-   → WAIT_RFID
-       → SUCCESS / FAILURE
-
-
-Admin Enrollment Flow
-
-WAIT_PIN (Admin PIN)
-   → ADMIN_ENTER_PIN
-       → ADMIN_SCAN_UID
-           → EEPROM Write
-
-
-Designed for:
-
-Clean state transitions
-
-Deterministic behavior
-
-Expandability
-
-💾 EEPROM Structure
-
-Each user record stores:
-
-Active flag
-
-UID length
-
-UID bytes (up to 7 bytes)
-
-4-digit PIN
-
-Includes a magic header to prevent accidental EEPROM overwrite.
-
-🧰 Hardware Used
+📐 Hardware Used
 
 Arduino Mega 2560
 
-MFRC522 RFID Reader (13.56 MHz)
-
-RFID Cards / Key Fobs
+MFRC522 RFID Reader (SPI)
 
 4x4 Matrix Keypad
 
-LCD1602 (Parallel)
-
-10k Potentiometer (contrast)
+LCD1602 (Parallel, 4-bit mode)
 
 Servo Motor
 
@@ -141,69 +66,50 @@ Passive Buzzer
 
 Red & Green LEDs
 
-220Ω Resistors
+10k Potentiometer (LCD contrast)
 
-Breadboard + Jumpers
+Breadboard + jumper wires
 
-🔌 Interfaces Utilized
+💻 Software Details
 
-SPI (RFID)
+Written in C++ (Arduino framework)
 
-Parallel 4-bit LCD
+Built with PlatformIO
 
-Matrix keypad scanning
+State-machine driven logic
 
-PWM (Servo)
+EEPROM structured user records
 
-EEPROM persistent storage
+SPI communication for RFID
 
-📚 Engineering Concepts Demonstrated
+Parallel 4-bit LCD interface
 
-Embedded firmware development
+Non-blocking keypress feedback
 
-Multi-peripheral integration
-
-EEPROM data management
-
-State machine architecture
-
-Hardware debugging
+🧠 Key Concepts Demonstrated
 
 Multi-factor authentication logic
 
-🚫 Security Notice
+Paired credential verification (UID ↔ PIN)
 
-This project uses UID-based RFID authentication and is intended for educational purposes only.
+EEPROM persistent storage
 
-Not suitable for commercial security deployment.
+Structured state-machine design
 
-🎬 Demo Highlights
+Multi-peripheral embedded integration
 
-Admin user enrollment
-
-Paired authentication validation
-
-Successful entry (servo + LED + tone)
-
-Failed authentication case
-
-Power-cycle persistence demonstration
+Hardware debugging and validation
 
 🚀 Future Improvements
 
 Failed-attempt lockout
 
-User deletion mode
+Admin user deletion
 
 Event logging
 
 RTC integration
 
-Secure RFID (DESFire EV2)
-
 3D printed enclosure
 
-👨‍💻 Author
-
-Oguzhan Besiktepe
-Embedded Systems & Software Engineering
+Secure RFID (DESFire)
