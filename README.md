@@ -10,7 +10,7 @@ This project combines **hardware integration**, **persistent storage**, and **st
 
 ## 📹 Demo Video
 
-https://youtu.be/8TgFQsH-KQM
+▶️ [Watch the Full Demo on YouTube](https://youtu.be/8TgFQsH-KQM)
 
 ---
 
