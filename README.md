@@ -8,9 +8,19 @@ This project combines **hardware integration**, **persistent storage**, and **st
 
 ---
 
+## 🧩 Problem
+
+- Unauthorized individuals are gaining access to restricted areas due to weak or single-factor authentication methods (e.g., shared PINs or physical keys).
+
+-### There is a need for a low-cost embedded system that:
+- Restricts access to authorized users only
+- Requires multi-factor authentication
+- Supports secure user enrollment
+- Persists crednetials after power loss
+
 ## 📹 Demo Video
 
-(Insert your YouTube link here)
+https://youtu.be/8TgFQsH-KQM
 
 ---
 
