@@ -14,6 +14,12 @@ This project combines **hardware integration**, **persistent storage**, and **st
 
 ---
 
+## System Schematic
+
+![Security Gate Schematic](docs/schematic.png)
+
+---
+
 ## 🧩 Problem
 
 Unauthorized individuals are gaining access to restricted areas due to weak or single-factor authentication methods (e.g., shared PINs or physical keys).
